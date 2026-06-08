@@ -16,6 +16,7 @@ body {
     background: #111;
     font-family: Arial, sans-serif;
     color: white;
+    transition: background 0.15s;
 }
 
 #message {
@@ -54,21 +55,37 @@ body {
 
 <button id="button"></button>
 
+<audio id="explosion" src="Explosion.mp3" preload="auto"></audio>
+
 <script>
 const messages = [
-    "Destuction initiated😈"
+    "Destruction initiated 😈"
 ];
 
 const button = document.getElementById("button");
 const message = document.getElementById("message");
+const explosion = document.getElementById("explosion");
 
 button.addEventListener("click", () => {
     const randomMessage =
         messages[Math.floor(Math.random() * messages.length)];
+
     message.textContent = randomMessage;
+
+    // Play explosion sound
+    explosion.currentTime = 0;
+    explosion.play();
+
+    // Flash screen white
+    document.body.style.background = "white";
+    document.body.style.color = "black";
+
+    setTimeout(() => {
+        document.body.style.background = "#111";
+        document.body.style.color = "white";
+    }, 150);
 });
 </script>
 
 </body>
 </html>
-
