@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Big Red Button</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #111;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+#message {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+#button {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+
+    background: radial-gradient(circle at 30% 30%, #ff6666, #cc0000);
+    box-shadow:
+        0 12px 0 #880000,
+        0 20px 30px rgba(0,0,0,0.5);
+
+    transition: transform 0.1s;
+}
+
+#button:active {
+    transform: translateY(10px);
+    box-shadow:
+        0 2px 0 #880000,
+        0 8px 15px rgba(0,0,0,0.5);
+}
+</style>
+</head>
+
+<body>
+
+<div id="message">DO NOT PRESS THE BUTTON</div>
+
+<button id="button"></button>
+
+<script>
+const messages = [
+    "I told you not to.",
+    "Seriously?",
+    "Why are you still pressing it?",
+    "Nothing good will happen.",
+    "You pressed it again.",
+    "The button is disappointed.",
+    "Keep going. I dare you.",
+    "This is your life now.",
+    "Button pressed."
+];
+
+const button = document.getElementById("button");
+const message = document.getElementById("message");
+
+button.addEventListener("click", () => {
+    const randomMessage =
+        messages[Math.floor(Math.random() * messages.length)];
+    message.textContent = randomMessage;
+});
+</script>
+
+</body>
+</html>
