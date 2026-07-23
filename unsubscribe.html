@@ -18,7 +18,7 @@
 
 
 <font size ="8">
- Unsubscribe from recieving emails<br></font>Watch the video for instructions on how to unsubscribe
+ Unsubscribe from recieving emails<br></font>Watch the video for instructions on how to unsubscribe...
  <p></p><p></p>
 
 
@@ -42,14 +42,16 @@ const message = document.getElementById("message");
 
 let timer;
 
-video.addEventListener("play", () => {
-    timer = setTimeout(() => {
-        message.style.display = "block";
-    }, 2000); // 3000 milliseconds = 3 seconds
-});
+video.addEventListener("pointerdown", () => {
+    if (video.paused) {
+        timer = setTimeout(() => {
+            message.style.display = "block";
+        }, 1000);
+    }
+}, { once: true });
 
 video.addEventListener("pause", () => {
-    clearTimeout(timer);      // Cancel the timer if paused before 3 seconds
+    clearTimeout(timer);
     message.style.display = "none";
 });
 </script>
