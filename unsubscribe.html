@@ -42,15 +42,20 @@ const message = document.getElementById("message");
 
 let timer;
 
-video.addEventListener("pointerdown", () => {
-    if (video.paused) {
-        timer = setTimeout(() => {
-            message.style.display = "block";
-        }, 1000);
-    }
-}, { once: true });
+video.addEventListener("play", () => {
+    clearTimeout(timer); // Prevent multiple timers
+
+    timer = setTimeout(() => {
+        message.style.display = "block";
+    }, 1000); // 1 second after Play is pressed
+});
 
 video.addEventListener("pause", () => {
+    clearTimeout(timer);
+    message.style.display = "none";
+});
+
+video.addEventListener("ended", () => {
     clearTimeout(timer);
     message.style.display = "none";
 });
