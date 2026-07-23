@@ -36,15 +36,20 @@
 </video><p id="message" style"display: none;">
     Just Kidding! you can't unsubscribe because this is sent by a human directly to you<br></br> GET RICKROLLED
 </p>
-  <script>
+ <script>
 const video = document.getElementById("myVideo");
 const message = document.getElementById("message");
 
+let timer;
+
 video.addEventListener("play", () => {
-    message.style.display = "block";
+    timer = setTimeout(() => {
+        message.style.display = "block";
+    }, 3000); // 3000 milliseconds = 3 seconds
 });
 
 video.addEventListener("pause", () => {
+    clearTimeout(timer);      // Cancel the timer if paused before 3 seconds
     message.style.display = "none";
 });
 </script>
