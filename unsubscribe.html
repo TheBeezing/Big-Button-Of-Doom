@@ -23,6 +23,7 @@
 
 
  <video 
+    id="myVideo"
     width="640" 
     height="360" 
     autoplay
@@ -32,7 +33,21 @@
 >
     <source src="video.mp4" type="video/mp4">
     Sorry but your browser couldn't display this video 🙁.
-</video><p></p><font size ="2">The instructions aren't ready yet so watch Reptilia in the meantime</font>
+</video><p id="message" style"display: none;">
+    Just Kidding! you can't unsubscribe because this is sent by a human directly to you<br></br> GET RICKROLLED
+</p>
+  <script>
+const video = document.getElementById("myVideo");
+const message = document.getElementById("message");
+
+video.addEventListener("play", () => {
+    message.style.display = "block";
+});
+
+video.addEventListener("pause", () => {
+    message.style.display = "none";
+});
+</script>
 
 </body>
 </html>
