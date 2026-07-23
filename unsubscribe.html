@@ -40,18 +40,17 @@
 const video = document.getElementById("myVideo");
 const message = document.getElementById("message");
 
-let firstPlay = true;
+let timer;
 
 video.addEventListener("play", () => {
-    if (!firstPlay) return;
-    firstPlay = false;
-
-    // If the video started almost immediately, assume autoplay.
-    const delay = video.currentTime < 0.2 ? 2000 : 1000;
-
-    setTimeout(() => {
+    timer = setTimeout(() => {
         message.style.display = "block";
-    }, delay);
+    }, 2000); // 3000 milliseconds = 3 seconds
+});
+
+video.addEventListener("pause", () => {
+    clearTimeout(timer);      // Cancel the timer if paused before 3 seconds
+    message.style.display = "none";
 });
 </script>
 </body>
